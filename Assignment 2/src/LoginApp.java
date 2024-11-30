@@ -59,7 +59,8 @@ public class LoginApp extends JFrame {
     private String authenticateUser(String email) {
         String userName = null;
         try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD)) {
-            String query = "SELECT name FROM User WHERE Email = ?";
+            // Updated SQL Query
+            String query = "SELECT Name FROM User WHERE email = ?";
             PreparedStatement stmt = conn.prepareStatement(query);
             stmt.setString(1, email);
             ResultSet rs = stmt.executeQuery();
